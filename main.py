@@ -6,9 +6,10 @@ from functions import confess
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 
+#Initiate values
+serverName = ""
+channelName = ""
 gameName = ""
-server_name = ""
-channel_name = ""
 
 @client.event
 async def on_ready():
@@ -18,7 +19,7 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if isinstance(message.channel, discord.channel.DMChannel) and message.author != client.user:
-        await confess(message,client,server_name, channel_name)
+        await confess(message,client,serverName, channelName)
 
 active()
 client.run(os.environ['BOT_TOKEN'])
