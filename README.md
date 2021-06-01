@@ -21,6 +21,6 @@ Provide values to serverName and channelName corresponding to the name of the se
 (Optional)  
 Provide a value to gameName and uncomment line 17 to have a custom bot status 
 
-The term os.environ['BOT_TOKEN'] should correspond to a secret bot token provided to you by [Discord]([https://discord.com/developers/applications])  
+The term os.environ['BOT_TOKEN'] should correspond to a secret bot token provided to you by [Discord](https://discord.com/developers/applications)  
 
 Invite the bot to your server and it's ready for anonymous messaging
