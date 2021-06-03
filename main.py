@@ -7,14 +7,14 @@ intents = discord.Intents.all()
 client = discord.Client(intents=intents)
 
 #Initiate values
-serverName = ""
-channelName = ""
-gameName = ""
+serverName = "Gamers Rise Up"
+channelName = "confessions"
+gameName = "with your feelings"
 
 @client.event
 async def on_ready():
   print('Login successful as {0.user}'.format(client))
-  #await client.change_presence(activity=discord.Game(gameName))
+  await client.change_presence(activity=discord.Game(gameName))
   
 @client.event
 async def on_message(message):

@@ -39,6 +39,11 @@ def mparse(message,guild):
             break;
           else:
             return ""
+    elif word[0]=='#':
+      for c in guild.channels:
+        if c.name == word[1:]:
+          word = word = '<#' + str(c.id) + '>';
+          break;
     output = output + str(word) + ' '
   return output
 

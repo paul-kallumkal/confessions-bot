@@ -8,6 +8,7 @@ Supports tagging members within the server
 Emojis can be used (including server emojis)  
 Reactions supported within 100 seconds of the message (timer resets on each reaction)  
 Files, Images and GIFS are supported too  
+Channel tagging has now been added  
 &nbsp;  
 
 ## Services  
