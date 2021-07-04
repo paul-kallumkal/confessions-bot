@@ -7,8 +7,10 @@ No formatting! Directly type the message you want to send
 Supports tagging members within the server  
 Emojis can be used (including server emojis)  
 Reactions supported within 100 seconds of the message (timer resets on each reaction)  
-Files, Images and GIFS are supported too  
+Files, Images and GIFs are supported too  
 Channel tagging has now been added  
+Admin user can delete confessions by sending a message starting with delete   
+Confessions cached with anonymity maintained  
 &nbsp;  
 
 ## Services  
@@ -17,10 +19,11 @@ To keep it active 24/7, the bot relies on http requests from [uptimerobot.com](h
 &nbsp;  
   
 ## Setup main.py  
-Provide values to serverName and channelName corresponding to the name of the server and channel the bot is intended for  
-
-(Optional)  
-Provide a value to gameName and uncomment line 17 to have a custom bot status 
+Initiate server specific values:  
+serverName  
+channelName  
+adminNames (optional list of strings)  
+gameName (optional)  
 
 The term os.environ['BOT_TOKEN'] should correspond to a secret bot token provided to you by [Discord](https://discord.com/developers/applications)  
 
