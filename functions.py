@@ -1,18 +1,23 @@
+import os
 import asyncio
+import discord
+import datetime
+from hashlib import sha256
 
 async def confess(message, client, guild_name, channel_name,cache):
     for guild in message.author.mutual_guilds:
         if guild.name == guild_name:
             for c in guild.channels:
                 if c.name == channel_name:
-                    try:
+                    if True:
                         parsed = mparse(message.content, guild)
                         if "" != parsed and "@" == parsed[0]:
                             await message.add_reaction("❌")
                             return await message.author.send(
                                 "Can't find user: " + parsed[1:])
                         if "" != parsed:
-                            confession = await c.send(parsed)
+                            embed = embed_text(parsed,message.author)
+                            confession = await c.send(embed=embed)
                             if len(cache) > 1000:
                               cache.pop(0)
                             cache.append(confession)
@@ -24,11 +29,9 @@ async def confess(message, client, guild_name, channel_name,cache):
                         await message.add_reaction("✅")
                         return await react_add_wait(confession, message,
                                                     client)
-                    except:
+                    else:
                         await message.add_reaction("❌")
-                        return await message.author.send(
-                            "I can't see the confessions channel. Contact your retarded admin"
-                        )
+                        return await message.author.send("Something went wrong")
             await message.add_reaction("❌")
             return await message.author.send("Something went wrong")
     await message.add_reaction("❌")
@@ -81,4 +84,12 @@ async def message_delete(message, cache):
     await message.add_reaction("🗑️")
   else:
     await message.add_reaction("❌")
+  return
+
+def embed_text(parsed, user):
+  encrypted = sha256((str(user) + os.environ['ENCRYPTION_KEY'] + str(datetime.datetime.now()).split()[0]).encode()).hexdigest()
+  color = int(encrypted[int(encrypted[1],16):int(encrypted[1],16)+6],16)
+  return discord.Embed(description=parsed, color=color)
+
+def embed_file(file, user):
   return

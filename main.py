@@ -5,13 +5,14 @@ from functions import confess, message_delete
 
 intents = discord.Intents.all()
 client = discord.Client(intents=intents)
+cache = []
 
 #Initiate values
-serverName = ""
-channelName = ""
-gameName = ""
-adminNames = []
-cache = []
+serverName = "Gamers Rise Up"
+channelName = "confessions"
+gameName = "with your identity"
+adminNames = ["Shadows#5555"]
+
 
 @client.event
 async def on_ready():
@@ -21,10 +22,10 @@ async def on_ready():
 @client.event
 async def on_message(message):
   if isinstance(message.channel, discord.channel.DMChannel) and message.author != client.user:
-      if message.content.startswith("delete") and message.author.name + "#" + message.author.discriminator in adminNames:
+      if message.content.startswith("!delete") and str(message.author) in adminNames:
         await message_delete(message,cache)
       else:
-        await confess(message,client,serverName, channelName,cache)
+        await confess(message,client,serverName,channelName,cache)
 
 active()
 client.run(os.environ['BOT_TOKEN'])

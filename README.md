@@ -10,7 +10,8 @@ Reactions supported within 100 seconds of the message (timer resets on each reac
 Files, Images and GIFs are supported too  
 Channel tagging has now been added  
 Admin user can delete confessions by sending a message starting with delete   
-Confessions cached with anonymity maintained  
+Confessions cached with anonymity maintained 
+Embedded messages with colours associated to users 
 &nbsp;  
 
 ## Services  
