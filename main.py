@@ -8,10 +8,10 @@ client = discord.Client(intents=intents)
 cache = []
 
 #Initiate values
-serverName = "Gamers Rise Up"
-channelName = "confessions"
-gameName = "with your identity"
-adminNames = ["Shadows#5555"]
+serverName = ""
+channelName = ""
+gameName = ""
+adminNames = [""]
 
 
 @client.event

@@ -1,7 +1,9 @@
 import os
 import asyncio
 import discord
-import datetime
+from datetime import datetime
+import random
+import pytz
 from hashlib import sha256
 
 async def confess(message, client, guild_name, channel_name,cache):
@@ -86,8 +88,17 @@ async def message_delete(message, cache):
     await message.add_reaction("❌")
   return
 
+random.seed(datetime.now())
+DATE = str(datetime.now(pytz.timezone('Asia/Kolkata'))).split()[0]
+SHIFT = str(random.random())
+
 def embed_text(parsed, user):
-  encrypted = sha256((str(user) + os.environ['ENCRYPTION_KEY'] + str(datetime.datetime.now()).split()[0]).encode()).hexdigest()
+  global DATE
+  global SHIFT
+  if DATE != str(datetime.now(pytz.timezone('Asia/Kolkata'))).split()[0]:
+    DATE = str(datetime.now(pytz.timezone('Asia/Kolkata'))).split()[0]
+    SHIFT = str(random.random())
+  encrypted = sha256((str(user) + os.environ['ENCRYPTION_KEY'] + SHIFT).encode()).hexdigest()
   color = int(encrypted[int(encrypted[1],16):int(encrypted[1],16)+6],16)
   return discord.Embed(description=parsed, color=color)
 
