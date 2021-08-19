@@ -11,8 +11,7 @@ cache = []
 serverName = ""
 channelName = ""
 gameName = ""
-adminNames = [""]
-
+adminNames = [""] # DemoName#0055
 
 @client.event
 async def on_ready():
@@ -22,10 +21,10 @@ async def on_ready():
 @client.event
 async def on_message(message):
   if isinstance(message.channel, discord.channel.DMChannel) and message.author != client.user:
-      if message.content.startswith("!delete") and str(message.author) in adminNames:
-        await message_delete(message,cache)
-      else:
-        await confess(message,client,serverName,channelName,cache)
+    if message.content.startswith("!delete") and str(message.author) in adminNames:
+      await message_delete(message,cache)
+    else:
+      await confess(message,client,serverName,channelName,cache)
 
 active()
 client.run(os.environ['BOT_TOKEN'])

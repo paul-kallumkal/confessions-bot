@@ -7,11 +7,12 @@ No formatting! Directly type the message you want to send
 Supports tagging members within the server  
 Emojis can be used (including server emojis)  
 Reactions supported within 100 seconds of the message (timer resets on each reaction)  
-Files, Images and GIFs are supported too  
+Videos, Images and GIFs are supported too  
 Channel tagging has now been added  
-Admin user can delete confessions by sending a message starting with delete   
+Admin users can delete multiple confessions at once
 Confessions cached with anonymity maintained  
-Embedded messages with colours associated to users 
+Embedded messages with daily changing colours associated to users
+
 &nbsp;  
 
 ## Services  
