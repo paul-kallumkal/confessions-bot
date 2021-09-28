@@ -21,7 +21,7 @@ async def confess(message, client, guild_name, channel_name, cache):
             if "" != parsed and "@" == parsed[0]:
               await message.add_reaction("❌")
               return await message.author.send(
-                  "Can't find user: " + parsed[1:])
+                  "Can't find user: " + parsed[1:] + '\n(Case sensitive and use : for spaces)')
             if "" != parsed:
               embed = embed_text(parsed,message.author)
               confession = await c.send(embed=embed)
@@ -122,3 +122,20 @@ def color_find(user):
     SHIFT = str(random.random())
   encrypted = sha256((str(user) + os.environ['ENCRYPTION_KEY'] + SHIFT).encode()).hexdigest()
   return int(encrypted[int(encrypted[1],16):int(encrypted[1],16)+6],16)
+
+async def change_channel(message, channelName):
+  if len(message.content.split(' ')) == 2:
+    await message.add_reaction("✅")
+    return message.content.split(' ')[1]
+  await message.add_reaction("❌")
+  return channelName
+
+async def send_help(message, adminNames):
+  description = "Send any message/attachment and it'll be sent anonymously to a specific channel\nTag people using @username (case sensitive)\nMention channels using #channelname (case sensitive)\nYou can add reactions up to 60 seconds after posting a confession"
+  color = int("2cbdf2",16)
+  embed = discord.Embed(description=description, color=color)
+  await message.channel.send(embed=embed)
+  if str(message.author) in adminNames:
+    description = "Admin commands:\n!delete to delete the most recent confession\n!delete n to delete the last n messages\n!channel channel_name to change the name of the channel for confessions"
+    embed = discord.Embed(description=description, color=color)
+    await message.channel.send(embed=embed)
