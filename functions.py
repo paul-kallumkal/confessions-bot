@@ -21,7 +21,7 @@ async def confess(message, client, guild_name, channel_name, cache):
             if "" != parsed and "@" == parsed[0]:
               await message.add_reaction("❌")
               return await message.author.send(
-                  "Can't find user: " + parsed[1:] + '\n(Case sensitive and use : for spaces)')
+                  "Can't find user: " + parsed[1:] + '\nCase sensitive and use : for spaces\nServer nickname and username both work')
             if "" != parsed:
               embed = embed_text(parsed,message.author)
               confession = await c.send(embed=embed)
